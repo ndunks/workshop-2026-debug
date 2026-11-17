@@ -25,18 +25,18 @@
         </section>
 
         <section class="challenge" aria-label="Password challenge">
-          <div class="challenge-top"><span>ACCESS CHECK</span><i data-lucide="asterisk" aria-hidden="true"></i></div>
+          <div class="challenge-top"><span>ACCESS CHECK</span><span class="challenge-asterisk" aria-hidden="true">*</span></div>
           <div class="challenge-content">
-            <div class="lock-icon"><i data-lucide="lock-keyhole" aria-hidden="true"></i></div>
+            <div class="result-mark" id="result-mark" aria-hidden="true">?</div>
             <h2>Enter the password</h2>
             <p class="challenge-copy">Your answer goes here.</p>
             <form id="password-form">
               <label for="password">PASSWORD</label>
               <div class="input-wrap">
                 <input id="password" name="password" type="password" placeholder="Enter your answer" autocomplete="off" required disabled />
-                <button class="visibility" id="visibility" type="button" aria-label="Show password" title="Show password" disabled><i data-lucide="eye" aria-hidden="true"></i></button>
+                <button class="visibility" id="visibility" type="button" aria-label="Show password" title="Show password" disabled>Show</button>
               </div>
-              <button class="submit" id="submit" type="submit" disabled><span>Check password</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></button>
+              <button class="submit" id="submit" type="submit" disabled><span>Check password</span><span aria-hidden="true">↗</span></button>
               <p class="feedback" id="feedback" role="status" aria-live="polite">Initializing validator...</p>
             </form>
           </div>

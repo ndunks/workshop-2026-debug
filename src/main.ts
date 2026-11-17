@@ -1,13 +1,12 @@
-import { createIcons, Asterisk, ArrowUpRight, Eye, EyeOff, LockKeyhole } from "lucide";
 import "./style.css";
-
-createIcons({ icons: { Asterisk, ArrowUpRight, Eye, EyeOff, LockKeyhole } });
 
 const form = document.querySelector<HTMLFormElement>("#password-form")!;
 const password = document.querySelector<HTMLInputElement>("#password")!;
 const visibility = document.querySelector<HTMLButtonElement>("#visibility")!;
 const submit = document.querySelector<HTMLButtonElement>("#submit")!;
 const feedback = document.querySelector<HTMLParagraphElement>("#feedback")!;
+const challenge = document.querySelector<HTMLElement>(".challenge")!;
+const resultMark = document.querySelector<HTMLElement>("#result-mark")!;
 
 type Validator = WebAssembly.Exports & {
   memory: WebAssembly.Memory;
@@ -20,8 +19,25 @@ visibility.addEventListener("click", () => {
   password.type = isHidden ? "text" : "password";
   visibility.setAttribute("aria-label", isHidden ? "Hide password" : "Show password");
   visibility.title = isHidden ? "Hide password" : "Show password";
-  visibility.innerHTML = `<i data-lucide="${isHidden ? "eye-off" : "eye"}" aria-hidden="true"></i>`;
-  createIcons({ icons: { Asterisk, ArrowUpRight, Eye, EyeOff, LockKeyhole } });
+  visibility.textContent = isHidden ? "Hide" : "Show";
+});
+
+function showResult(state: "error" | "success", message: string) {
+  challenge.classList.remove("result-error", "result-success");
+  void challenge.offsetWidth;
+  challenge.dataset.result = state;
+  challenge.classList.add(`result-${state}`);
+  resultMark.textContent = state === "success" ? "✓" : "!";
+  feedback.textContent = message;
+  feedback.dataset.state = state;
+}
+
+password.addEventListener("input", () => {
+  delete challenge.dataset.result;
+  challenge.classList.remove("result-error", "result-success");
+  resultMark.textContent = "?";
+  feedback.textContent = "";
+  delete feedback.dataset.state;
 });
 
 async function initialize() {
@@ -40,14 +56,12 @@ async function initialize() {
     event.preventDefault();
     const bytes = new TextEncoder().encode(password.value);
     if (bytes.length > 128) {
-      feedback.textContent = "Password must be 128 bytes or less.";
-      feedback.dataset.state = "error";
+      showResult("error", "Password must be 128 bytes or less.");
       return;
     }
     new Uint8Array(validator.memory.buffer, validator.inputPointer(), bytes.length).set(bytes);
     const valid = validator.validatePassword(bytes.length) === 1;
-    feedback.textContent = valid ? "Access granted. You found it." : "Not quite. Try again.";
-    feedback.dataset.state = valid ? "success" : "error";
+    showResult(valid ? "success" : "error", valid ? "Access granted. You found it." : "Not quite. Try again.");
   });
 }
 
