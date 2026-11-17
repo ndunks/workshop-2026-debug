@@ -13,7 +13,7 @@ button:disabled,input:disabled{cursor:not-allowed;opacity:.65}
 .topbar-label{color:#586257;white-space:nowrap}
 .status-dot{display:inline-block;width:7px;height:7px;background:#87c834;border-radius:50%;margin-right:8px}
 .topbar-number{color:#a5ada0;margin-left:12px}
-.main{flex:1;display:grid;grid-template-columns:1fr minmax(360px,480px);gap:10%;align-items:center;padding:76px 0 90px}
+.main{flex:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,42%);gap:10%;align-items:center;padding:76px 0 90px}
 .intro{max-width:640px}
 .eyebrow{display:flex;align-items:center;gap:12px;color:#65715f;font-family:"DM Mono",monospace;font-size:10px;font-weight:500}
 .eyebrow-line{width:26px;height:2px;background:#80bd30}
@@ -29,6 +29,12 @@ h1 .title-dot{color:#92cd43}
 .challenge-top{border-bottom:1px solid #edf0ea}
 .challenge-asterisk{font-size:23px;line-height:1;color:#9caf96}
 .challenge-content{padding:42px 38px 26px}
+.signal-stage{display:grid;place-items:center;margin:-8px 0 28px}
+.signal-orbit{position:relative;width:132px;height:132px;border:1px solid #e6d1d1;overflow:hidden;background:#28171e}
+.signal-image{display:block;width:100%;height:100%;animation:signal-turn 24s linear infinite}
+.signal-scan{position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,#ffab9955 49%,#ffab99aa 50%,transparent 52%);animation:signal-scan 3.5s ease-in-out infinite;pointer-events:none}
+@keyframes signal-turn{to{transform:rotate(360deg)}}
+@keyframes signal-scan{0%,100%{transform:translateY(-70%);opacity:.2}50%{transform:translateY(70%);opacity:.85}}
 .result-mark{width:52px;height:52px;display:grid;place-items:center;background:#eaf8d8;color:#4f7f24;font:600 24px "Space Grotesk",sans-serif}
 h2{font-size:25px;line-height:1.2;margin:27px 0 8px}
 .challenge-copy{color:#899388;font-size:14px;margin:0 0 36px}
@@ -56,10 +62,11 @@ input:focus{border-color:#72a83a;box-shadow:0 0 0 2px #b9ef6540}
 @keyframes confirm{0%,100%{box-shadow:0 20px 50px #253b1b0b}40%{box-shadow:0 0 0 5px #b9ef6570,0 20px 50px #253b1b20}}
 @keyframes mark-pop{0%{transform:scale(.75)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
 @keyframes feedback-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-@media(prefers-reduced-motion:reduce){.result-error,.result-success,.result-error .result-mark,.result-success .result-mark,.result-error .feedback,.result-success .feedback{animation:none}}
+@media(prefers-reduced-motion:reduce){.result-error,.result-success,.result-error .result-mark,.result-success .result-mark,.result-error .feedback,.result-success .feedback,.signal-image,.signal-scan{animation:none}}
 .challenge-bottom{border-top:1px solid #edf0ea}
 .bottom-dot{color:#89c743;font-size:9px}
 .page-footer{min-height:72px;border-top:1px solid #d5dad0;color:#929d8e}
 .footer-arrow{color:#6e9b4c;font-size:16px;margin-left:9px}
+@media(min-width:801px) and (max-width:1100px){h1{font-size:54px}}
 @media(max-width:800px){.main{grid-template-columns:1fr;gap:40px;padding:58px 0 64px}.intro{max-width:none}.intro-footer{margin-top:36px}.challenge{max-width:520px;width:100%;justify-self:center}h1{font-size:54px}.topbar{height:76px}}
 @media(max-width:400px){.page-shell{padding:0 5%}.topbar-label{font-size:9px}.topbar-number{display:none}.brand{font-size:13px}.brand-mark{margin-right:6px}.challenge-content{padding:32px 24px 20px}.challenge-top,.challenge-bottom{padding:0 24px}h1{font-size:47px}}
