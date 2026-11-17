@@ -47,8 +47,9 @@ export async function writeChallengeImage(encoded) {
       const cross = (Math.abs(horizontal - 127.5) < 1 || Math.abs(vertical - 127.5) < 1) && distance < 104;
       const center = distance < 11;
       const tick = distance > 108 && distance < 112 && (Math.abs(horizontal - 127.5) < 2 || Math.abs(vertical - 127.5) < 2);
-      const grid = horizontal % 32 === 0 || vertical % 32 === 0;
-      const color = center || tick ? [255, 171, 153] : ring || cross ? [215, 83, 80] : grid ? [73, 35, 40] : [40, 23, 30];
+      // const grid = horizontal % 32 === 0 || vertical % 32 === 0;
+      // const color = center || tick ? [255, 171, 153] : ring || cross ? [215, 83, 80] : grid ? [73, 35, 40] : [255, 255, 255];
+      const color = center || tick ? [255, 171, 153] : ring || cross ? [215, 83, 80] : [255, 255, 255];
       image.data.set([...color, 255], offset);
     }
   }
