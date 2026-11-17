@@ -7,13 +7,14 @@
     "node": ">=24.0.0"
   },
   "scripts": {
-    "build:wasm": "cd public && clang --target=wasm32 -nostdlib -ffreestanding -O0 -g -fdebug-compilation-dir=. -Wl,--no-entry -Wl,--export-memory -Wl,--export=inputPointer -Wl,--export=validatePassword -o validator.wasm validator.c",
+    "build:wasm": "cd src/wasm && clang --target=wasm32 -nostdlib -ffreestanding -O0 -g -fdebug-compilation-dir=. -Wl,--no-entry -Wl,--export-memory -Wl,--export=inputPointer -Wl,--export=validatePassword -o validator.wasm validator.c",
     "dev": "npm run build:wasm && vite --host 127.0.0.1",
     "build": "npm run build:wasm && tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1"
   },
   "devDependencies": {
+    "@types/node": "^26.6.6",
     "typescript": "^5.7.3",
-    "vite": "^6.0.7"
+    "vite": "^8.1.0"
   }
 }

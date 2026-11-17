@@ -8,12 +8,6 @@ const feedback = document.querySelector<HTMLParagraphElement>("#feedback")!;
 const challenge = document.querySelector<HTMLElement>(".challenge")!;
 const resultMark = document.querySelector<HTMLElement>("#result-mark")!;
 
-type Validator = WebAssembly.Exports & {
-  memory: WebAssembly.Memory;
-  inputPointer: () => number;
-  validatePassword: (length: number) => number;
-};
-
 visibility.addEventListener("click", () => {
   const isHidden = password.type === "password";
   password.type = isHidden ? "text" : "password";
@@ -41,12 +35,7 @@ password.addEventListener("input", () => {
 });
 
 async function initialize() {
-  const response = await fetch(`${import.meta.env.BASE_URL}validator.wasm`);
-  if (!response.ok) throw new Error("Could not load validator");
-  const { instance } = await WebAssembly.instantiateStreaming(response, {
-    env: { abort: () => { throw new Error("WASM aborted"); } },
-  });
-  const validator = instance.exports as Validator;
+  const validator = await import("./wasm/validator.wasm");
   password.disabled = false;
   visibility.disabled = false;
   submit.disabled = false;
