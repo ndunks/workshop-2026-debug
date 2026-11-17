@@ -7,6 +7,8 @@ const submit = document.querySelector<HTMLButtonElement>("#submit")!;
 const feedback = document.querySelector<HTMLParagraphElement>("#feedback")!;
 const challenge = document.querySelector<HTMLElement>(".challenge")!;
 const resultMark = document.querySelector<HTMLElement>("#result-mark")!;
+const challengeTitle = document.querySelector<HTMLHeadingElement>("#challenge-title")!;
+const challengeCopy = document.querySelector<HTMLParagraphElement>("#challenge-copy")!;
 const signalImage = document.querySelector<HTMLImageElement>("#signal-image")!;
 
 visibility.addEventListener("click", () => {
@@ -22,7 +24,9 @@ function showResult(state: "error" | "success", message: string) {
   void challenge.offsetWidth;
   challenge.dataset.result = state;
   challenge.classList.add(`result-${state}`);
-  resultMark.textContent = state === "success" ? "✓" : "!";
+  resultMark.textContent = state === "success" ? "WINNER" : "!";
+  challengeTitle.textContent = state === "success" ? "You got it!" : "Not this time";
+  challengeCopy.textContent = state === "success" ? "The password is yours." : "Take another guess.";
   feedback.textContent = message;
   feedback.dataset.state = state;
 }
@@ -31,6 +35,8 @@ password.addEventListener("input", () => {
   delete challenge.dataset.result;
   challenge.classList.remove("result-error", "result-success");
   resultMark.textContent = "?";
+  challengeTitle.textContent = "Guess the password?";
+  challengeCopy.textContent = "One input. One secret.";
   feedback.textContent = "";
   delete feedback.dataset.state;
 });
