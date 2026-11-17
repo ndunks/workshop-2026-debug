@@ -57,9 +57,8 @@ input:focus{border-color:var(--accent);box-shadow:0 0 0 2px #22458e24}
 @keyframes mark-pop{0%{transform:scale(.75)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
 @keyframes feedback-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 .challenge-bottom{border-top:1px solid #f0ece9}
-.bottom-dot{color:#d92f36;font-size:9px}
+.bottom-dot{color:#22458e}
 .page-footer{min-height:72px;border-top:1px solid #e3dcd6;color:#928983}
-.footer-arrow{color:var(--accent);font-size:16px;margin-left:9px}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 @media(max-width:800px){.topbar{height:76px}.challenge-content{padding:28px 30px 22px}}
 @media(max-width:400px){.page-shell{padding:0 5%}.topbar-label{font-size:9px}.topbar-number{display:none}.brand{font-size:13px}.brand-mark{margin-right:6px}.challenge-content{padding:26px 22px 20px}.challenge-top,.challenge-bottom{padding:0 22px}h1{font-size:34px}}
