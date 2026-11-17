@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f3f5ef" />
+    <title>The Password | Debug Workshop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Debug workshop home"><span class="brand-mark">//</span> DEBUG<span class="brand-light">WORKSHOP</span></a>
+        <span class="topbar-label"><span class="status-dot"></span> FIELD EXERCISE <span class="topbar-number">/ 01</span></span>
+      </header>
+
+      <main class="main">
+        <section class="intro" aria-labelledby="page-title">
+          <div class="eyebrow"><span class="eyebrow-line"></span> THE CHALLENGE <span class="eyebrow-index">01 / 01</span></div>
+          <h1 id="page-title">What is the<br /><span>password</span><span class="title-dot">?</span></h1>
+          <p class="intro-copy">One input. One secret.<br />It's in there somewhere.</p>
+          <div class="intro-footer"><span>CLIENT-SIDE INVESTIGATION</span><span class="footer-cross">+</span></div>
+        </section>
+
+        <section class="challenge" aria-label="Password challenge">
+          <div class="challenge-top"><span>ACCESS CHECK</span><i data-lucide="asterisk" aria-hidden="true"></i></div>
+          <div class="challenge-content">
+            <div class="lock-icon"><i data-lucide="lock-keyhole" aria-hidden="true"></i></div>
+            <h2>Enter the password</h2>
+            <p class="challenge-copy">Your answer goes here.</p>
+            <form id="password-form">
+              <label for="password">PASSWORD</label>
+              <div class="input-wrap">
+                <input id="password" name="password" type="password" placeholder="Enter your answer" autocomplete="off" required disabled />
+                <button class="visibility" id="visibility" type="button" aria-label="Show password" title="Show password" disabled><i data-lucide="eye" aria-hidden="true"></i></button>
+              </div>
+              <button class="submit" id="submit" type="submit" disabled><span>Check password</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></button>
+              <p class="feedback" id="feedback" role="status" aria-live="polite">Initializing validator...</p>
+            </form>
+          </div>
+          <div class="challenge-bottom"><span>LOCAL VALIDATION</span><span>WASM <span class="bottom-dot">●</span> READY</span></div>
+        </section>
+      </main>
+
+      <footer class="page-footer"><span>THE DEBUG WORKSHOP</span><span>LOOK CLOSER <span class="footer-arrow">↗</span></span></footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

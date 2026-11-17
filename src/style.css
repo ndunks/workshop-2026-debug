@@ -1,0 +1,54 @@
+:root{font-family:"Space Grotesk",sans-serif;color:#202720;background:#f3f5ef;font-synthesis:none;letter-spacing:0}
+*{box-sizing:border-box}
+body{margin:0;min-width:320px;background:linear-gradient(90deg,transparent 49.95%,#e8ebe3 50%,transparent 50.05%),#f3f5ef}
+button,input{font:inherit}
+button{cursor:pointer}
+button:disabled,input:disabled{cursor:not-allowed;opacity:.65}
+.page-shell{min-height:100vh;max-width:1600px;margin:auto;padding:0 6.25%;display:flex;flex-direction:column}
+.topbar,.page-footer{display:flex;justify-content:space-between;align-items:center;font-family:"DM Mono",monospace;font-size:10px;font-weight:500;letter-spacing:0}
+.topbar{height:92px;border-bottom:1px solid #d5dad0}
+.brand{color:#202720;text-decoration:none;font-family:"Space Grotesk",sans-serif;font-size:15px;font-weight:700;white-space:nowrap}
+.brand-mark{display:inline-grid;place-items:center;background:#b9ef65;width:33px;height:33px;margin-right:10px;font-family:"DM Mono",monospace;font-weight:500}
+.brand-light{font-weight:400}
+.topbar-label{color:#586257;white-space:nowrap}
+.status-dot{display:inline-block;width:7px;height:7px;background:#87c834;border-radius:50%;margin-right:8px}
+.topbar-number{color:#a5ada0;margin-left:12px}
+.main{flex:1;display:grid;grid-template-columns:1fr minmax(360px,480px);gap:10%;align-items:center;padding:76px 0 90px}
+.intro{max-width:640px}
+.eyebrow{display:flex;align-items:center;gap:12px;color:#65715f;font-family:"DM Mono",monospace;font-size:10px;font-weight:500}
+.eyebrow-line{width:26px;height:2px;background:#80bd30}
+.eyebrow-index{margin-left:18px;color:#a6afa1}
+h1{font-size:clamp(54px,6rem,96px);line-height:1.04;letter-spacing:0;margin:32px 0 25px;font-weight:700}
+h1 span:not(.title-dot){color:#64765e}
+h1 .title-dot{color:#92cd43}
+.intro-copy{font-size:19px;line-height:1.55;color:#6d786b;margin:0}
+.intro-footer{display:flex;align-items:center;justify-content:space-between;margin-top:96px;padding-top:20px;border-top:1px solid #d5dad0;color:#8a9586;font:10px "DM Mono",monospace}
+.footer-cross{font-size:18px;color:#9bad92}
+.challenge{background:#fff;border:1px solid #dce1d8;box-shadow:0 20px 50px #253b1b0b}
+.challenge-top,.challenge-bottom{height:61px;padding:0 30px;display:flex;align-items:center;justify-content:space-between;color:#8b9687;font:10px "DM Mono",monospace}
+.challenge-top{border-bottom:1px solid #edf0ea}
+.challenge-top svg{width:19px;height:19px;color:#9caf96}
+.challenge-content{padding:42px 38px 26px}
+.lock-icon{width:52px;height:52px;display:grid;place-items:center;background:#eaf8d8;color:#4f7f24}
+.lock-icon svg{width:23px;height:23px;stroke-width:1.6}
+h2{font-size:25px;line-height:1.2;margin:27px 0 8px}
+.challenge-copy{color:#899388;font-size:14px;margin:0 0 36px}
+label{display:block;color:#697468;font:10px "DM Mono",monospace;margin-bottom:10px}
+.input-wrap{position:relative}
+input{width:100%;height:56px;padding:0 54px 0 16px;border:1px solid #d7ddd4;border-radius:0;color:#202720;background:#fff;outline:none;font-size:14px}
+input::placeholder{color:#aab3a7}
+input:focus{border-color:#72a83a;box-shadow:0 0 0 2px #b9ef6540}
+.visibility{position:absolute;right:5px;top:5px;width:46px;height:46px;border:0;background:transparent;color:#899588;display:grid;place-items:center}
+.visibility svg{width:18px;height:18px}
+.submit{height:56px;width:100%;margin-top:14px;padding:0 17px;border:0;background:#263527;color:#fff;display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:600}
+.submit:hover:not(:disabled){background:#3a513a}
+.submit svg{width:18px;height:18px}
+.feedback{min-height:20px;margin:14px 0 0;font-size:13px;color:#7a8777}
+.feedback[data-state="error"]{color:#a2473a}
+.feedback[data-state="success"]{color:#487d25}
+.challenge-bottom{border-top:1px solid #edf0ea}
+.bottom-dot{color:#89c743;font-size:9px}
+.page-footer{min-height:72px;border-top:1px solid #d5dad0;color:#929d8e}
+.footer-arrow{color:#6e9b4c;font-size:16px;margin-left:9px}
+@media(max-width:800px){.main{grid-template-columns:1fr;gap:40px;padding:58px 0 64px}.intro{max-width:none}.intro-footer{margin-top:36px}.challenge{max-width:520px;width:100%;justify-self:center}h1{font-size:54px}.topbar{height:76px}}
+@media(max-width:400px){.page-shell{padding:0 5%}.topbar-label{font-size:9px}.topbar-number{display:none}.brand{font-size:13px}.brand-mark{margin-right:6px}.challenge-content{padding:32px 24px 20px}.challenge-top,.challenge-bottom{padding:0 24px}h1{font-size:47px}}

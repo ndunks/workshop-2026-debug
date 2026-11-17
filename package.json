@@ -1,0 +1,19 @@
+{
+  "name": "wasm-debug-workshop",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build:wasm": "cd public && clang --target=wasm32 -nostdlib -ffreestanding -O0 -g -fdebug-compilation-dir=. -Wl,--no-entry -Wl,--export-memory -Wl,--export=inputPointer -Wl,--export=validatePassword -o validator.wasm validator.c",
+    "dev": "npm run build:wasm && vite --host 127.0.0.1",
+    "build": "npm run build:wasm && tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "lucide": "^0.468.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7"
+  }
+}
