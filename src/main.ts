@@ -1,5 +1,4 @@
 import "./style.css";
-import signalUrl from "./wasm/signal.png";
 
 const form = document.querySelector<HTMLFormElement>("#password-form")!;
 const password = document.querySelector<HTMLInputElement>("#password")!;
@@ -38,7 +37,9 @@ password.addEventListener("input", () => {
 
 async function initialize() {
   const validator = await import("./wasm/validator.wasm");
-  signalImage.src = signalUrl;
+  const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
+  if (!favicon?.getAttribute("href")) throw new Error("Could not find favicon");
+  signalImage.src = favicon.href;
   await signalImage.decode();
   const canvas = document.createElement("canvas");
   canvas.width = signalImage.naturalWidth;

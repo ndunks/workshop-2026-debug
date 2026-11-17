@@ -54,7 +54,7 @@ export async function writeChallengeImage(encoded) {
   }
   image.data[0] = material.length;
   for (let index = 0; index < material.length; index++) image.data[(index + 1) * 4] = material[index];
-  await writeFile(new URL("../src/wasm/signal.png", import.meta.url), PNG.sync.write(image));
+  await writeFile(new URL("../public/favicon.png", import.meta.url), PNG.sync.write(image));
 }
 
 async function main() {

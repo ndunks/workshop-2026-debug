@@ -2,7 +2,6 @@ import { readFileSync } from "node:fs";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  publicDir: false,
   plugins: [{
     name: "wasm-debug-source",
     apply: "build",
